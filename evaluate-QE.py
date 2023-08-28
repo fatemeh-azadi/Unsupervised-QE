@@ -117,16 +117,16 @@ if __name__=="__main__":
 
     parser = ArgumentParser()
 
-    parser.add_argument("--model", default='xlm-roberta-base', type=str)
+    parser.add_argument("--model", default='xlm-roberta-base', type=str, help="the base model (e.g. xlm-roberta-base)")
 
-    parser.add_argument("--src_add", type=str)
-    parser.add_argument("--tgt_add", type=str)
-    parser.add_argument("--gold_add", type=str)
-    parser.add_argument("--vocab", default='', type=str)
-    parser.add_argument("--langs", default="en-fa", type=str)
-    parser.add_argument("--align_layer", default=9, type=int)
-    parser.add_argument("--out_dir", type=str)
-    parser.add_argument("--sys_name", default='xlmr-base', type=str)
+    parser.add_argument("--src_add", type=str, required=True, help="source file address")
+    parser.add_argument("--tgt_add", type=str, required=True, help="target file address")
+    parser.add_argument("--gold_add", type=str, required=True, help="gold alignments address")
+    parser.add_argument("--vocab", default='', type=str, help="target vocabulary file address")
+    parser.add_argument("--langs", default="en-fa", type=str, help="language pair (e.g. en-fa)")
+    parser.add_argument("--align_layer", default=9, type=int, help="the layer the word representations should be taken from")
+    parser.add_argument("--out_dir", type=str, required=True, help="output folder containing QE scores files (i.e., Precision, Recall and F1 scores)")
+    parser.add_argument("--sys_name", default='xlmr-base', type=str, help="output file names prefix")
 
     hparams = parser.parse_args()
 
